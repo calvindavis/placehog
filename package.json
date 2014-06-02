@@ -14,5 +14,12 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.4.0"
+  },
+  "repository": {
+	"type": "git",
+	"url": "http://github.com/calvindavis/placehog.git"
+  },
+  "bugs": {
+	"url": "http://github.com/calvindavis/placehog/issues"
   }
 }
