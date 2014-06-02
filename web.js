@@ -37,7 +37,7 @@ var requestHandler = function (req, res) {
 		res.sendfile(cachePath);
 	} else {
 		image = im(imagePath);
-		image.resize(width, height);
+		image.resize(width, height, "!");
 		image.write(cachePath, function (err) {
 			res.sendfile(cachePath);
 		});
