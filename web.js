@@ -2,12 +2,11 @@ var express = require("express");
 var app = express();
 var port = Number(process.env.PORT || 5000);
 
-app.get("/", function (req, res) {
+app.use(express.static("static"));
+
+app.get("/json", function (req, res) {
 	var result = {
-		foo: 1,
-		bar: true,
-		baz: "Testing!",
-		qux: function () {}
+		placehog: true
 	};
 	var message = JSON.stringify(result);
 	
