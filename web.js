@@ -29,8 +29,8 @@ var requestHandler = function (req, res) {
 	var width = Number(params.width) || 100;
 	var height = Number(params.height) || width;
 	var imageName = getImageName(width, height);
-	var imagePath = "./images/" + imageName + ".jpg";
-	var cachePath = "./cache/" + imageName + "-" + width + "x" + height + ".jpg";
+	var imagePath = __dirname + "/images/" + imageName + ".jpg";
+	var cachePath = __dirname + "/cache/" + imageName + "-" + width + "x" + height + ".jpg";
 	var image = null;
 	
 	if (fs.existsSync(cachePath)) {
