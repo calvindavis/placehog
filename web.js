@@ -12,7 +12,7 @@ app.get("/", function (req, res) {
 	var message = JSON.stringify(result);
 	
 	res.set("Content-Type", "application/json");
-	res.send(message");
+	res.send(message);
 });
 
 app.listen(port);
