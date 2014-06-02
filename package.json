@@ -13,13 +13,14 @@
   "author": "Calvin Davis",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.4.0"
+    "express": "^4.4.0",
+    "gm": "^1.16.0"
   },
   "repository": {
-	"type": "git",
-	"url": "http://github.com/calvindavis/placehog.git"
+    "type": "git",
+    "url": "http://github.com/calvindavis/placehog.git"
   },
   "bugs": {
-	"url": "http://github.com/calvindavis/placehog/issues"
+    "url": "http://github.com/calvindavis/placehog/issues"
   }
 }
