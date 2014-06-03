@@ -30,7 +30,7 @@ var requestHandler = function (req, res) {
 	var height = Number(params.height) || width;
 	var name = getImageName(width, height);
 	var path = __dirname + "/images/" + name + ".jpg";
-	var image = im(imagePath);
+	var image = im(path);
 	
 	image.resize(width, height, "!");
 	image.stream(function (err, stdout, stderr) {
