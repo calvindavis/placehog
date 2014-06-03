@@ -9,18 +9,33 @@ var port = Number(process.env.PORT || 5000);
 app.use(express.static("static"));
 
 var getImageName = (function () {
-	var imageNames = [
-		"image-1",
-		"image-2",
-		"image-3"
+	var images = [
+		["image-1", 948, 532],
+		["image-2", 2560, 1600],
+		["image-3", 615, 409],
+		["image-4", 446, 594],
+		["image-5", 400, 400]
 	];
 	
 	return function (width, height) {
-		var size = width + height;
-		var index = size % imageNames.length;
-		var imageName = imageNames[index];
+		var ratio = width / height;
+		var diff = Infinity;
+		var name = null;
 		
-		return imageName;
+		images.forEach(function (image) {
+			var thisName = image[0];
+			var thisWidth = image[1];
+			var thisHeight = image[2];
+			var thisRatio = thisWidth / thisHeight;
+			var thisDiff = Math.abs(thisRatio - ratio);
+			
+			if (thisDiff < diff) {
+				diff = thisDiff;
+				name = thisName;
+			}
+		});
+		
+		return name;
 	};
 })();
 
