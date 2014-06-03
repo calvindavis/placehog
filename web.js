@@ -28,20 +28,15 @@ var requestHandler = function (req, res) {
 	var params = req.params;
 	var width = Number(params.width) || 100;
 	var height = Number(params.height) || width;
-	var imageName = getImageName(width, height);
-	var imagePath = __dirname + "/images/" + imageName + ".jpg";
-	var cachePath = __dirname + "/tmp/" + imageName + "-" + width + "x" + height + ".jpg";
-	var image = null;
+	var name = getImageName(width, height);
+	var path = __dirname + "/images/" + name + ".jpg";
+	var image = im(imagePath);
 	
-	if (fs.existsSync(cachePath)) {
-		res.sendfile(cachePath);
-	} else {
-		image = im(imagePath);
-		image.resize(width, height, "!");
-		image.write(cachePath, function (err) {
-			res.sendfile(cachePath);
-		});
-	}
+	image.resize(width, height, "!");
+	image.stream(function (err, stdout, stderr) {
+		res.set("Content-Type", "image/jpeg");
+		stdout.pipe(res);
+	});
 };
 
 app.get("/:width", requestHandler);
